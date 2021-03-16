@@ -1,0 +1,21 @@
+﻿@model FirstThingsFirst.Models.TaskItem
+
+<form asp-action="EnterTask" method="post">
+    <label asp-for="TaskDescription"> Task Name</label>
+    <input asp-for="TaskDescription"/>
+    <br />
+
+    <label asp-for="Urgent"> Is this urgent? </label>
+    <input type="checkbox" />
+    <br />
+
+    <label asp-for="Important"> Is this important? </label>
+    <input type="checkbox" />
+    <br />
+
+    <button type="submit">Add Task</button>
+
+    <br />
+    <div asp-validation-summary="All"></div>
+
+</form>

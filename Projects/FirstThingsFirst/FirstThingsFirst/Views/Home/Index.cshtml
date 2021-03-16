@@ -1,0 +1,68 @@
+﻿@*@model IEnumerable<TaskItem>*@
+@model QuadrantViewModel
+<h3>To Do</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-6 border border-dark">
+            <h3>Urgent and Important</h3>
+
+            <ul>
+                @foreach (var x in Model.QuandrantI)
+                {
+                    <li> @x.TaskDescription </li>
+                }
+            </ul>
+        </div>
+        <div class="col-6 border border-dark">
+
+            <h3>Not Urgent But Important</h3>
+            <br />
+
+
+            <ul>
+                @foreach (var x in Model.QuandrantII)
+                {
+                    <li> @x.TaskDescription</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-6 border border-dark">
+            <h3>Urgent Not Important</h3>
+
+            <ul>
+                @foreach (var x in Model.QuandrantIII)
+                {
+                    <li> @x.TaskDescription </li>
+                }
+            </ul>
+        </div>
+        <div class="col-6 border border-dark">
+            <h3>Not Urgent Not Important</h3>
+
+            <ul>
+                @foreach (var x in Model.QuandrantIV)
+                {
+                    <li> @x.TaskDescription </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<p>List of Tasks</p>
+
+<ul>
+@foreach (var x in Model.QuandrantI)
+{
+    <li>@x.TaskDescription</li>
+}
+
+</ul>
