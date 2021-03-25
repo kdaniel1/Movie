@@ -66,9 +66,9 @@ namespace Assignment9Movies.Controllers
 
         //edit a movie entry
         [HttpPost]
-        public IActionResult EditView(long moviesId)
+        public IActionResult EditView(long movieId)
         {
-            Movies movie = _context.Movies.Where(m => m.MovieId == moviesId).First();
+            Movies movie = _context.Movies.Where(m => m.MovieId == movieId).First();
             movie.Edited = true;
 
             return View("EditMovie", movie);
@@ -77,28 +77,14 @@ namespace Assignment9Movies.Controllers
         public IActionResult EditMovie(Movies movie)
         {
             _context.Update(movie);
+            if (ModelState.IsValid)
+            {
+                _context.SaveChanges();
+                return View("Movies", _context.Movies);
 
-            _context.SaveChanges();
-
-            return View("Movies", _context.Movies);
+            }
+            return View("EditMovie", movie);
         }
-
-        //[HttpPost]
-        //public IActionResult EditView(long movieId)
-        //{
-        //    Movies movie = _context.Movies.Where(m => m.MovieId == movieId).First();
-        //    return View("EditMovie", movie);
-        //}
-
-        //public IActionResult EditMovie(Movies movie)
-        //{
-        //    _context.Update(movie);
-
-        //    _context.SaveChanges();
-
-        //    return View("Movies", _context.Movies);
-        //}
-
 
         public IActionResult Movies()
         {
