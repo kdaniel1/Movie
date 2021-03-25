@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Movies";
+}
+
+@model IEnumerable<Assignment9Movies.Models.Movies>
+<div>
+    <h2> Movie List:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Movie ID</th>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent To</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.MovieId</td>
+                    <td>@x.Category</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.Notes</td>
+                    <td class="text-center">
+                        <form asp-action="EditMovie" method="post">
+                            <input type="hidden" name="MovieId" value="@x.MovieId" />
+                            <button type="submit" class="btn btn-info btn-sm">Edit</button>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <form asp-action="DeleteMovie" name="MovieId" value="@x.MovieId">
+                            <input type="hidden" name="MovieId" value="@x.MovieId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
